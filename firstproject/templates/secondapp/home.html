@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+{% extends "base.html" %}
+{% block body_block %}
+    <!-- 
+	{% if users %}
+	    <table>
+	    	<thead>
+	    		<th>
+	    			Full Name
+	    		</th>
+	    		<th>
+	    			Email
+	    		</th>
+	    	</thead>
+	    	{% for user in users %}
+	    		<tr>
+	    			<td>
+	    				{{user.name}}
+	    			</td>
+	    			<td>
+	    				{{ user.email }}
+	    			</td>
+	    		</tr>
+	    	{% endfor %}
+	    </table>
+	
+	{% endif %} -->
+	{% if users %}
+	    <ol>
+	    	{% for user in users %}
+	    		<li>User Info</li>
+	    		<ul>
+	    			<li>First Name: {{user.first_name}}</li>
+	    			<li>Last Name: {{user.last_name}}</li>
+	    			<li>Email: {{user.email}}</li>
+
+	    		</ul>
+	    	{% endfor %}
+	    	
+	    </ol>
+	
+	{% endif %}
+{% endblock body_block %}

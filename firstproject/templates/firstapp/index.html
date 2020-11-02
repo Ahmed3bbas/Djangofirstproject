@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+{% extends "base.html" %}
+{% load static %}
+
+{% block body_block %}
+	<h1>
+		Hello this is the Django picture
+	</h1>
+	<figure class="figure">
+	  <img src="{% static "images/django.png" %}" class="figure-img mx-auto img-fluid rounded" alt="Uh oh!, django image can't find it">
+	  <figcaption class="figure-caption">Django web development</figcaption>
+	</figure>
+	{% if user.is_authenticated %}
+
+		<h1>
+			This is table form DB
+		</h1>
+		{% if access_data %}
+		    
+		<table>
+			<thead>
+				<th>Name</th>
+				<th>Date</th>	
+			</thead>
+			
+			{% for item in access_data %}
+			<tr>
+				<td>{{ item.name }}</td>
+				<td>{{ item.date | date:'Y-m-d' }}</td>
+			</tr>
+			{% endfor %}
+		
+		</table>
+		{% else %}
+		    <p>Database is Empty</p>
+		
+		{% endif %}
+
+    {% else %}
+	        <h3>Please login</h3>
+	        <a href="{% url "userapp:login" %}">
+	        	<button class="btn btn-primary">Login</button>
+	        </a>
+	
+	{% endif %}
+{% endblock body_block %}

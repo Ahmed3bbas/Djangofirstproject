@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block body_block %}
+    <div class="jumbotron">
+    	<h1>
+    		Here is user app index 
+    	</h1>
+    	{% if not user.is_authenticated %}
+    	   <h2>
+            please reister to show your profile   
+           </h2>
+    	<a href="{% url "userapp:register" %}"><button class="btn btn-primary">
+    		register
+    	</button></a>
+        {% else %}
+            <h2 >Welcome {{ user.username }}</h2>
+            <h3> Here is your profile</h3>
+    	{% endif %}
+    </div>
+{% endblock body_block %}
